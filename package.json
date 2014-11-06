@@ -1,9 +1,18 @@
 {
   "name": "xpacker",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "a packer for udc builders",
   "private": true,
+  "keywords": [
+    "build",
+    "packer"
+  ],
   "scripts": {
     "start": "node ./bin/www"
+  },
+  "author": {
+    "name": "@风骓",
+    "email": "xsh613@gmail.com"
   },
   "dependencies": {
     "express": "~4.9.0",
@@ -17,5 +26,13 @@
     "compression": "~1.2.0",
     "socket.io": "~1.2.0",
     "redis": "~0.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/WarrenXia/xpacker.git"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/WarrenXia/xpacker/issues"
   }
 }
