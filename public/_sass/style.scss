@@ -1,0 +1,40 @@
+@import "compass/reset";
+@import "compass/css3";
+$main-color: #563d7c;
+$white: white;
+$base-height: 10px;
+$base-width: 10px;
+$font-size: 10px;
+body {
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+a {
+    color: $main-color;
+}
+.xpacker {
+    .header {
+        height: $base-height*4.5;
+        line-height: $base-height*4.5;
+        background-color: $main-color;
+        background-image: url(../images/header.png?20141031);
+        background-position: center top;
+        .nav {
+            width: $base-width*98;
+            margin: 0 auto;
+            color: $white;
+            font-size: $font-size*2;
+            font-weight: bold;
+            overflow: hidden;
+            text-align: center;
+        }
+        .title {
+            display: inline-block;
+            margin-top: $base-height*1.2;
+            width:100px;
+            height: 22px;
+            text-indent: -1000em;
+            background-image: url(../images/xpacker.png?20141105);
+            background-size: 100%;
+        }
+    }
+}
