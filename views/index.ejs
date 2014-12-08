@@ -5,11 +5,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta id="viewport" name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui"/>
     <title><%= title %></title>
-    <link rel="shortcut icon" href="/images/favicon.ico?20141105" type="image/x-icon"/>
-    <link rel="stylesheet" href="/css/style.css" />
-    <script>document.write('<script src="./js/'+('__proto__' in {} ? 'zepto' :'jquery-1.11.1') +'.min.js?20141031"><\/script>')</script>
-    <script src="./js/socket.io-1.2.0.js?20141031"></script>
-    <script src="./js/main.js"></script>
+    <link rel="stylesheet" href="/css/style.css" />   
 </head>
 <body>
 <div class="xpacker">
@@ -19,8 +15,103 @@
         </div>
     </header>
     <section class="content">
-        
+        <header class="title t-mod">
+            <h1>项目列表</h1>
+        </header>
+        <div class="art-wrap">
+            <article class="art-mod">
+                <h3 class="art-title">t4项目</h3>
+                <div class="art-body">
+                    <% if (t4.length&&t4[0]!=='') { %>
+                    <ul class="art-ul">
+                        <% t4.forEach(function(name){ %>
+                        <li class="art-li"><%= name %><i></i></li>
+                        <% }) %>
+                    </ul>
+                    <% } %> 
+                    <div class="add-project">
+                        <div class="input-wrap">
+                            <input type="text" placeholder="如：appstyle/V6_widget" class="add-input">
+                            <a href="javascript:;" class="main-btn add-btn" project="t4">添加项目</a>
+                        </div>
+                    </div>
+                </div>  
+            </article>
+            <article class="m-mod">
+                <div class="s-mod">
+                    <h3 class="art-title">t36项目</h3>
+                    <div class="art-body">
+                        <% if (t36.length&&t36[0]!=='') { %>
+                        <ul class="art-ul">
+                            <% t36.forEach(function(name){ %>
+                            <li class="art-li"><%= name %><i></i></li>
+                            <% }) %>
+                        </ul>
+                        <% } %>
+                        <div class="add-project">
+                            <div class="input-wrap">
+                                <input type="text" placeholder="如：appstyle/V6_widget" class="add-input">
+                                <a href="javascript:;" class="main-btn add-btn" project="t36">添加项目</a>
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+                <div class="s-mod">
+                    <h3 class="art-title">t35项目</h3>
+                    <div class="art-body">
+                        <% if (t35.length&&t35[0]!=='') { %>
+                        <ul class="art-ul">
+                            <% t35.forEach(function(name){ %>
+                            <li class="art-li"><%= name %><i></i></li>
+                            <% }) %>
+                        </ul>
+                        <% } %>
+                        <div class="add-project">
+                            <div class="input-wrap">
+                                <input type="text" placeholder="如：appstyle/V6_widget" class="add-input">
+                                <a href="javascript:;" class="main-btn add-btn" project="t35">添加项目</a>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </article>
+            
+        </div>
+        <div class="action-area">
+            <div class="t-mod">
+                <a href="javascript:;" class="main-btn packing-btn">打包选中项目</a>
+                <!-- <span class="packing">打包中……</span> -->
+                <span class="tag-area">
+                    tag地址：
+                    <a href="https://svn1.intra.sina.com.cn/weibo/ria/t4/publish_online/appstyle/V6_widget/online.1.02" class="tag-link">https://svn1.intra.sina.com.cn/weibo/ria/t4/publish_online/appstyle/V6_widget/online.1.02</a>
+                </span>
+            </div>           
+        </div>
+        <div class="console">
+            <nav class="art-mod">
+                <h3 class="art-title">控制台日志</h3>
+            </nav>
+            <div class="console-body">
+                <div class="log-wrap" id="log-wrap">
+                    <div class="log" id="log"></div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <section class="hint">
+    </section>
+    <% if(error)  { %>
+    <section class="error">
+        <div class="form-tips">
+            <span class="error-tip"><i class="error-icon"></i><em class="error-txt"><%= error %></em></span>
+        </div>
+    </section>
+    <% } %>
 </div>
+
+<script>document.write('<script src="./js/'+('__proto__' in {} ? 'zepto' :'jquery-1.11.1') +'.min.js?20141031"><\/script>')</script>
+<script src="./js/socket.io-1.2.0.js?20141031"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>

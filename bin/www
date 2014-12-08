@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var debug = require('debug')('xpacker');
 var app = require('../app');
+var io =require('socket.io');
 
 app.set('port', process.env.PORT || 3000);
 
@@ -8,12 +9,15 @@ var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
 
-var socket = require('socket.io').listen(server);
-socket.on('connection',function(client){
-    // console.log(client.server); 
-    // console.log(client.conn.id);
-    var a=client;
-    client.emit('test',{},function(data){
-        console.log(data);
-    })
-})
+io = io.listen(server);
+io.sockets.on('connection',function(socket){
+    socket.emit('connected',true);
+    socket.on('add project',function(data){
+        
+    });
+});
+
+
+
+
+

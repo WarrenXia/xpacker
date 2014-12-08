@@ -1,18 +1,115 @@
 @import "compass/reset";
 @import "compass/css3";
 $main-color: #563d7c;
+$back-color:#e9eaed;
 $white: white;
 $base-height: 10px;
 $base-width: 10px;
 $font-size: 10px;
-body {
-    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+$font-color1:#333333;
+body,input {
+    font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+    background-color: $back-color;
+    color: $font-color1;
 }
 a {
     color: $main-color;
+    text-decoration: none;
+}
+.succ-icon ,.error-icon {
+    display: inline-block;
+    width: $base-width*2;
+    height: $base-height*2;
+    background-image: url(../images/check-icon.png?20141126);
+}
+.loading-icon {
+    display: inline-block;
+    margin-top: $base-height*0.2;
+    width: $base-width*1.6;
+    height: $base-height*1.6;
+    background-image: url(../images/loading.png?20141126);
+    vertical-align: top;
+    @include animation(loading 0.8s linear infinite);
+}
+@include keyframes(loading){
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+.fadeInOut {
+    @include animation(fadeInOut 2s linear both);
+}
+@include keyframes(fadeInOut){
+    0%,100%{opacity:0;}
+    30%,70% {opacity:1;}
+}
+.fadeIn {
+    @include animation(fadeIn 0.5s linear both);
+}
+@include keyframes(fadeIn){
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+.error {
+    position: absolute;
+    top:0;
+    height: 100%;
+    width:100%;
+    background-color: rgba(0,0,0,.2)
+}
+.error .form-tips {
+    opacity:1;
+}
+.form-tips {
+    position: fixed;
+    top:$base-height*6.1;
+    left: 50%;
+    @include transform(translateX(-50%));
+    padding:$base-height*1.5;
+    height: $base-height*2;
+    background-color: rgba(0,0,0,.8);
+    @include border-radius(2px);
+    @include box-shadow(0 1px 2px rgba(0,0,0,0.2));
+    color: $white;
+    opacity:0;
+    .succ-tip,.error-tip,.loading-tip {
+        display: inline-block;
+        height: $base-height*2;
+        overflow: hidden;
+    }
+    em {
+        display: inline-block;
+        margin-top: $base-height*0.5;
+        margin-left: $base-width*0.8;
+        font-size: $font-size*1.2;
+        vertical-align: top;    
+    }
+}
+.error-icon {
+    background-position: left bottom;
+}
+.main-btn {
+    display: inline-block;
+    margin-left: $base-width;
+    padding:0 $base-width*3;
+    line-height: $base-height*3.4;
+    font-size: $font-size*1.4;
+    background: #ff8140;
+    border: 1px solid #f77c3d;
+    text-align: center;
+    @include border-radius(2px);
+    @include box-shadow(0 1px 2px rgba(0,0,0,0.2));
+    color: #fff;
+    &:hover {
+        background: #f7671d;
+        border: 1px solid #f06923;
+    }
 }
 .xpacker {
     .header {
+        position: fixed;
+        top:0;
+        left:0;
+        width:100%;
         height: $base-height*4.5;
         line-height: $base-height*4.5;
         background-color: $main-color;
@@ -35,6 +132,174 @@ a {
             text-indent: -1000em;
             background-image: url(../images/xpacker.png?20141105);
             background-size: 100%;
+        }
+    }
+    .content {
+        width: $base-width*98;
+        margin: $base-height*4.5 auto;
+        padding-top: 1px;
+        .t-mod,.art-mod,.m-mod {
+            margin-top: $base-width*1.5;
+            @include flexbox((
+                box-flex:1
+            ), $version: 1);
+            @include flexbox((
+                box-flex:1
+            ), $version: 2);
+            @include flexbox((
+                flex:1
+            ));   
+            margin-left: $base-width*1.5;
+            &:first-child{
+                margin-left: 0;
+            }     
+        }
+        .t-mod,.art-mod,.s-mod {
+            @include border-radius(2px);
+            @include box-shadow(0 0 2px rgba(0,0,0,0.2));
+            background-color: $white;
+        }
+        .s-mod {
+            margin-top: $base-height*1.5;
+            &:first-child {
+                margin-top:0;
+            }
+        }
+        .t-mod {
+            padding:$base-height*1.5;
+        }
+        .title {
+            h1 {
+                font-size: $font-size*1.6;
+                line-height: $base-height*2;
+                height: $base-height*2;
+                color:$font-color1;
+            }
+        }
+        .art-wrap {
+            @include flexbox((
+                display: box,
+                box-pack:justify
+            ), $version: 1);
+            @include flexbox((
+                display: flexbox,
+                justify-content:space-between
+            ), $version: 2);
+            @include flexbox((
+                display: flex,
+                justify-content:space-between
+            ));         
+        }
+
+        .art-title {
+            font-size: $font-size*1.4;
+            padding:$base-width*1.2 $base-width*1.5;
+            border-bottom: 1px solid #f2f2f5;
+            color:$font-color1;
+            font-weight:bold;
+        }
+        .art-body {
+            padding: $base-width*1.5;
+        }
+        .art-ul {
+            margin-left: -$base-width*1.5;
+            font-size: 0;
+        }
+        .art-li {
+            position: relative;
+            display: inline-block;
+            margin-left: $base-width*1.5;
+            margin-bottom: $base-height*1.5;
+            padding:$base-width;
+            font-size: $font-size*1.4;
+            font-style: italic;
+            white-space: nowrap;
+            cursor: pointer;
+            @include border-radius(2px);
+            @include box-shadow(0 0 2px rgba(0,0,0,0.2));
+            i {
+                position: absolute;
+                display: none;
+                height: $base-height;
+                width: $base-width;
+                top:1px;
+                right:1px;
+                background-image: url(../images/check-icon.png?20141126);
+                background-size: $base-width $base-height*2;
+            }
+            &:hover,&.checked{
+                color: $white;
+                background: $main-color;
+            }
+            &.checked {
+                i {
+                    display: block;
+                }
+            }
+        } 
+        .add-input {
+            width:$base-width*25;
+            height: $base-height*3.4;
+            line-height: $base-height*3.4;
+            padding: 0 $base-width*0.5;
+            border: 1px solid #cccccc;
+            @include border-radius(2px);
+            &:focus {
+                outline: none;
+                border-color: #fa7d3c;
+                background-color: $white;
+            }
+        }    
+        .action-area {
+            margin-top: $base-height*1.5;
+            .main-btn {
+                margin-left: 0;
+                width:$base-width*20;
+                font-size: $font-size*1.6;
+                line-height: $base-height*4;
+                vertical-align: top;
+            }
+            .form-tips {
+                display: inline-block;
+                margin-top: 0;
+            }
+            .succ-tip,.error-tip {
+                margin-top: $base-height;
+            }
+            .tag-area,.packing {
+                display: inline-block;
+                margin-left: $base-width;
+                line-height: $base-height*4;
+                vertical-align: top;
+                font-size: $font-size*1.4;
+            }
+            .tag-link:hover {
+                color: #eb7350;
+            }
+        }
+        .console-body {
+            padding:$base-height*1.5;
+            background-color: $white;
+            .log-wrap {
+                padding:$base-height*1.5;
+                line-height: 1.5;
+                background-color: #333333;
+                height: 400px;
+                overflow: auto;
+                color: #eeeeee;
+                font-family: "courier new";
+                font-size: $font-size*1.4;
+                @include border-radius(2px);
+                &::-webkit-scrollbar {
+                    width: 7px;
+                    height: 7px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    height: 50px;
+                    background-color: #999999;
+                    border-radius: 4px;
+                }
+            }
         }
     }
 }

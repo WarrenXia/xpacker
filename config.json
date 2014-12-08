@@ -1,0 +1,7 @@
+{
+    "svn_base_path":"https://svn1.intra.sina.com.cn/weibo/ria/",
+    "svn_trunk_path":"/dev/trunk",
+    "svn_tags_path":"/dev/tags",
+    "svn_online_path":"/online",
+    "svn_publish_online":"/publish_online"
+}
