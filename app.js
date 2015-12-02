@@ -10,7 +10,6 @@ var debug = require('debug')('xpacker');
 
 var routes = require('./routes/index');
 
-
 var app = express();
 
 // view engine setup
